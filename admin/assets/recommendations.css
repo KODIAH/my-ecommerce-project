@@ -1,0 +1,210 @@
+/* Recommendations Section */
+.recommendations {
+    padding: 20px;
+}
+
+/* Recommendation Controls */
+.recommendation-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.recommendation-controls .form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.recommendation-controls label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.recommendation-controls select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: var(--input-light);
+    color: var(--text-light);
+}
+
+.recommendation-controls button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color:rgb(5, 5, 54);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.recommendation-controls button:hover {
+    background-color: ligthblue;
+    transform: scale(1.05);
+}
+
+/* Recommended Products List */
+.recommendation-list-container {
+    background: var(--card-light);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-list-container h3 {
+    margin-bottom: 15px;
+    color: var(--navbar-footer-light);
+}
+
+.recommendation-list-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recommendation-list-container ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.recommendation-list-container ul li:last-child {
+    border-bottom: none;
+}
+
+.recommendation-list-container ul li button {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.recommendation-list-container ul li button:hover {
+    background: #ff1a1a;
+    transform: scale(1.05);
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-light);
+    margin: 10px 0;
+}
+
+.loading-indicator i {
+    font-size: 1.2em;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+/* Pagination Container */
+.pagination-container {
+    display: flex;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.pagination-container button {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background-color: var(--card-light);
+    color: var(--text-light);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.pagination-container button:hover {
+    background-color: var(--primary-light);
+    color: white;
+    transform: scale(1.05);
+}
+
+.pagination-container button:disabled {
+    background-color: var(--primary-dark);
+    color: white;
+    cursor: not-allowed;
+}
+
+/* Dark Mode Styling */
+.dark-mode .recommendation-controls select {
+    background-color: var(--input-dark);
+    color: var(--text-dark);
+    border-color: #444;
+}
+
+.dark-mode .recommendation-controls button {
+    background-color: orange;
+}
+
+.dark-mode .recommendation-list-container {
+    background-color: var(--card-dark);
+    color: var(--text-dark);
+}
+
+.dark-mode .recommendation-list-container h3 {
+    color: var(--text-dark);
+}
+
+.dark-mode .recommendation-list-container ul li {
+    border-bottom: 1px solid #444;
+}
+
+.dark-mode .pagination-container button {
+    background-color: var(--card-dark);
+    color: var(--text-dark);
+    border-color: #444;
+}
+
+.dark-mode .pagination-container button:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+.dark-mode .error-message {
+    background-color: #4a1a1a;
+    color: #ff6b6b;
+    border-color: #ff4d4d;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .recommendation-controls {
+        flex-direction: column;
+    }
+
+    .recommendation-controls button {
+        width: 100%;
+    }
+
+    .pagination-container {
+        flex-wrap: wrap;
+    }
+
+    .pagination-container button {
+        flex: 1 1 45%;
+    }
+}

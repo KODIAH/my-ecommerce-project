@@ -1,0 +1,253 @@
+:root {
+    /* Color Scheme */
+    --primary-color: #020d26; /* Main color for buttons, links, and accents */
+    --secondary-color: #ff6b6b; /* Secondary color for hover states */
+    --background-light: #f5f7fa; /* Light background color */
+    --background-dark: #1a1a1a; /* Dark background color */
+    --card-light: #ffffff; /* Light card background */
+    --card-dark: #2d2d2d; /* Dark card background */
+    --text-light: #333333; /* Light text color */
+    --text-dark: #f5f5f5; /* Dark text color */
+    --navbar-footer-light: #020d26; /* Navbar and footer color for light mode */
+    --navbar-footer-dark: #020d26; /* Navbar and footer color for dark mode */
+    --border-radius: 8px; /* Consistent border radius */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-light);
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Skip to Content Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 1000;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Auth Container */
+.auth-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    background: var(--card-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.auth-container h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: var(--background-light);
+    color: var(--text-light);
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(2, 13, 38, 0.3);
+}
+
+/* Password Wrapper */
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper i {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.password-wrapper i:hover {
+    color: var(--secondary-color);
+}
+
+/* Password Hint */
+.password-hint {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+/* Action Button */
+.action-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: var(--border-radius);
+    background: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.action-btn:hover {
+    background: var(--secondary-color);
+    transform: scale(1.02);
+}
+
+.action-btn:active {
+    transform: scale(0.98);
+}
+
+/* Auth Links */
+.auth-links {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.auth-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* Error Message Container */
+#error-message {
+    display: none;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+    border-radius: var(--border-radius);
+    color: #c62828;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Loading Spinner */
+.fa-spinner {
+    margin-left: 10px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dark Mode Styling */
+.dark-mode .auth-container {
+    background: var(--card-dark);
+    color: var(--text-dark);
+}
+
+.dark-mode .auth-container h2 {
+    color: var(--text-dark);
+}
+
+.dark-mode .form-group label {
+    color: var(--text-dark);
+}
+
+.dark-mode .form-group input {
+    background: var(--background-dark);
+    border-color: #444;
+    color: var(--text-dark);
+}
+
+.dark-mode .form-group input:focus {
+    border-color: var(--primary-color);
+}
+
+.dark-mode .auth-links a {
+    color: var(--primary-color);
+}
+
+.dark-mode .auth-links a:hover {
+    color: var(--secondary-color);
+}
+
+.dark-mode #error-message {
+    background: #3a1a1a;
+    border-color: #5c2c2c;
+    color: #ff6b6b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-container {
+        margin: 50px auto;
+        padding: 20px;
+    }
+
+    .auth-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-group input {
+        padding: 10px;
+    }
+
+    .action-btn {
+        padding: 10px;
+    }
+}

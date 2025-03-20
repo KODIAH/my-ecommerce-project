@@ -1,0 +1,350 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #0056b3;
+    --background-light: #f4f4f4;
+    --text-light: #333;
+    --navbar-footer-light: #020d26;
+    --card-light: #fff;
+    --background-dark: #0f172a;
+    --text-dark: #e2e8f0;
+    --navbar-footer-dark: #1e293b;
+    --card-dark: #334155;
+    --action-btn-light: #007bff;
+    --action-btn-dark: #f39c12;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Skip to Content Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--navbar-footer-light);
+    color: white;
+    padding: 8px;
+    z-index: 1001;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Top Navbar */
+.top-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--navbar-footer-light);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.top-navbar .menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.top-navbar .menu-toggle .fa-bars {
+    font-size: 24px; /* Adjust size */
+    color: white; /* Adjust color */
+    transition: transform 0.3s ease;
+}
+
+.top-navbar .menu-toggle:hover .fa-bars {
+    transform: scale(1.1); /* Add hover effect */
+}
+
+.top-navbar .theme-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.top-navbar .theme-toggle:hover {
+    transform: scale(1.1);
+    color: #f39c12;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: var(--navbar-footer-light);
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 2px 0 10px rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%);
+    z-index: 999; /* Ensure sidebar is above main content */
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar .close-sidebar {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.sidebar .close-sidebar .fa-times {
+    font-size: 24px; /* Adjust size */
+    color: white; /* Adjust color */
+    transition: transform 0.3s ease;
+}
+
+.sidebar .close-sidebar:hover .fa-times {
+    transform: scale(1.1); /* Add hover effect */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    margin-top: 30px;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #bbb;
+    display: block;
+    padding: 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 260px;
+    padding: 20px;
+    margin-top: 60px;
+    transition: margin-left 0.3s ease;
+}
+
+/* Dashboard Overview */
+.dashboard-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background: var(--card-light);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--navbar-footer-light);
+}
+
+.card p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+/* Quick Actions */
+.quick-actions {
+    text-align: center;
+    margin: 30px 20px;
+}
+
+.actions-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Action Buttons */
+.action-btn {
+    background: var(--action-btn-light);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.action-btn:hover,
+.action-btn:focus {
+    background: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+/* Footer */
+.dashboard-footer {
+    background: var(--navbar-footer-light);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    .sidebar {
+        transform: translateX(0);
+    }
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+/* Dark Mode Navbar */
+.dark-mode .top-navbar {
+    background: var(--navbar-footer-dark);
+}
+
+/* Dark Mode Sidebar */
+.dark-mode .sidebar {
+    background: var(--navbar-footer-dark);
+}
+
+/* Dark Mode Footer */
+.dark-mode .dashboard-footer {
+    background: var(--navbar-footer-dark);
+}
+
+/* Dark Mode Cards */
+.dark-mode .card {
+    background-color: var(--card-dark);
+    color: var(--text-dark);
+}
+
+.dark-mode .card h2 {
+    color: var(--text-dark);
+}
+
+.dark-mode .card p {
+    color: var(--text-dark);
+}
+
+/* Dark Mode Action Buttons */
+.dark-mode .action-btn {
+    background: var(--action-btn-dark);
+    color: var(--navbar-footer-dark);
+}
+
+.dark-mode .action-btn:hover,
+.dark-mode .action-btn:focus {
+    background: #e68900;
+}
+
+/* Dashboard-specific Toast Notifications */
+.dashboard-toast {
+    position: fixed;
+    top: 80px;
+    right: 30px;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.dashboard-toast.show {
+    opacity: 1;
+}
+
+.dashboard-toast.error {
+    background-color: #ff4444; /* Red for errors */
+}
+
+.dashboard-toast.success {
+    background-color: #4CAF50; /* Green for success */
+}

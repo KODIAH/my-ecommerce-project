@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Items</title>
+    <link rel="stylesheet" href="../assets/admin.css">
+    <link rel="stylesheet" href="../assets/shared.css">
+    <link rel="stylesheet" href="../assets/items.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="top-navbar">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h1>Manage Items</h1>
+         <!-- Logout Button for Large Screens -->
+         <button class="logout-btn" id="logout-btn" aria-label="Logout">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">🌙</button>
+    </header>
+
+    <div class="dashboard-container">
+        <nav class="sidebar" id="sidebar">
+            <button class="close-sidebar" id="close-sidebar" aria-label="Close Sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul>
+                <li><a href="admin.html">Dashboard</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="subcategories.html">Subcategories</a></li>
+                <li><a href="items.html" class="active">Items</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+                <li><a href="recommendations.html">Recommendations</a></li>
+                <li><a href="loyalty.html">Loyalty</a></li>
+                  <!-- Logout Button for Small Screens -->
+                  <li><button class="logout-btn sidebar-logout-btn" id="sidebar-logout-btn" aria-label="Logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button></li>
+            </ul>
+        </nav>
+
+        <main class="main-content" id="main-content">
+            <section class="item-management">
+                <!-- Category and Subcategory Selection -->
+                <div class="form-group">
+                    <label for="category-select">Select Category:</label>
+                    <select id="category-select">
+                        <option value="">-- Choose Category --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="subcategory-select">Select Subcategory:</label>
+                    <select id="subcategory-select">
+                        <option value="">-- Choose Subcategory --</option>
+                    </select>
+                </div>
+
+                <!-- Add Item Form -->
+                <div class="form-group">
+                    <label for="item-name">Item Name:</label>
+                    <input type="text" id="item-name" placeholder="Enter item name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-price">Price ($):</label>
+                    <input type="number" id="item-price" placeholder="Enter price" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-image">Item Image:</label>
+                    <input type="file" id="item-image" accept="image/png, image/jpeg, image/gif" required>
+                    <div id="drop-area">Drag & Drop Image Here</div>
+                    <img id="image-preview" src="" alt="Image Preview" style="display:none; max-width: 100px;">
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="button-container">
+                    <button id="add-item" class="action-btn">
+                        <i class="fas fa-plus"></i> Add Item
+                    </button>
+                    <button id="sort-items" class="action-btn">
+                        <i class="fas fa-sort"></i> Sort Items
+                    </button>
+                </div>
+
+                <!-- Sorting Dropdown -->
+                <div class="form-group">
+                    <label for="sort-by">Sort By:</label>
+                    <select id="sort-by">
+                        <option value="name">Name</option>
+                        <option value="price">Price</option>
+                        <option value="category">Category</option>
+                    </select>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="form-group">
+                    <label for="search-item">Search Item:</label>
+                    <input type="text" id="search-item" placeholder="Search items...">
+                </div>
+
+                <!-- Items Table -->
+               <!-- Items Table -->
+<div class="item-table">
+    <div class="loading-spinner">Loading...</div> <!-- Loading Spinner -->
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="select-all"></th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price ($)</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="items-list"></tbody>
+    </table>
+</div>
+
+                <!-- Bulk Actions -->
+                <div class="delete-selected-container">
+                    <button id="bulk-delete-items" class="action-btn" disabled>
+                        <i class="fas fa-trash"></i> Bulk Delete Selected
+                    </button>
+                    <button id="bulk-edit-items" class="action-btn" disabled>
+                        <i class="fas fa-edit"></i> Bulk Edit Selected
+                    </button>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination-container">
+                    <button id="load-more" class="action-btn">Load More</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-item-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-edit-modal">&times;</span>
+            <h2>Edit Item</h2>
+            <div class="form-group">
+                <label for="edit-item-name">Item Name:</label>
+                <input type="text" id="edit-item-name" placeholder="Edit item name">
+            </div>
+            <div class="form-group">
+                <label for="edit-item-price">Price ($):</label>
+                <input type="number" id="edit-item-price" placeholder="Edit price">
+            </div>
+            <div class="form-group">
+                <label for="edit-item-image">Item Image:</label>
+                <input type="file" id="edit-item-image" accept="image/png, image/jpeg, image/gif">
+                <img id="edit-item-image-preview" src="" alt="Current Image" style="display:none; max-width: 100px;">
+            </div>
+            <button id="edit-item-save" class="action-btn">Save Changes</button>
+        </div>
+    </div>
+        <!-- Toast Notification Container -->
+        <div id="toast-container" class="toast-container"></div>
+    <div id="notification-card" class="notification-card">
+        You will be redirected in 45 seconds.
+      </div>
+
+
+    <footer class="dashboard-footer">
+        <p>&copy; 2025 KODIAH. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/items.js"></script>
+    <script src="../js/shared.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+/* Item Management Section */
+.item-management {
+    padding: 20px;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Drag-and-Drop Image Upload */
+#drop-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border 0.3s ease;
+}
+
+#drop-area.dragover {
+    border-color: #007bff;
+}
+
+/* Image Upload Preview */
+#image-preview,
+#edit-item-image-preview {
+    display: block;
+    margin-top: 10px;
+    max-width: 100px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button-container button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button-container button i {
+    font-size: 16px;
+}
+
+.button-container button:hover {
+    transform: scale(1.05);
+}
+
+/* Bulk Delete Button Disabled State */
+#bulk-delete-items:disabled,
+#bulk-edit-items:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Item Table */
+.item-table {
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    margin-top: 20px;
+    border: 1px solid #ddd; /* Optional: Add a border for better visibility */
+    border-radius: 5px; /* Optional: Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+/* Table Styling */
+.item-table table {
+    width: 100%;
+    min-width: 800px; /* Ensure the table has a minimum width */
+    border-collapse: collapse;
+}
+
+.item-table th,
+.item-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.item-table th {
+    background-color: var(--navbar-footer-light);
+    color: white;
+}
+
+.item-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Dark Mode Table Styling */
+.dark-mode .item-table th {
+    background-color: var(--navbar-footer-dark);
+}
+
+.dark-mode .item-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Delete Selected Button Container */
+.delete-selected-container {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.delete-selected-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.delete-selected-container button:hover {
+    transform: scale(1.05);
+}
+
+/* Edit Modal Styling */
+#edit-item-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+    width: 90%;
+    max-width: 500px;
+}
+
+#edit-item-modal.active {
+    display: block;
+}
+
+#edit-item-modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#edit-item-modal .modal-content h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#edit-item-modal .modal-content .form-group {
+    margin-bottom: 15px;
+}
+
+#edit-item-modal .modal-content .form-group label {
+    font-weight: 500;
+}
+
+#edit-item-modal .modal-content .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#edit-item-modal .modal-content button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+#edit-item-modal .modal-content button:hover {
+    background-color: #0056b3;
+}
+
+#close-edit-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    background: none;
+    border: none;
+}
+
+/* Pagination Styles */
+.pagination-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#load-more {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+#load-more:hover {
+    background-color: #0056b3;
+}
+
+/* Toast Notification Styles */
+#toast-container {
+    position: fixed;
+    top: 80px; /* Position at the top of the screen */
+    right: 30px; /* Position at the right of the screen */
+    z-index: 1000; /* Ensure it's above other elements */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between toasts */
+}
+
+.toast {
+    padding: 15px;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transform: translateX(100%); /* Slide in from the right */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(0); /* Slide into view */
+}
+
+.toast button {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.toast button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Toast Colors */
+.toast.success { background-color: #28a745; }  /* Green */
+.toast.error { background-color: #dc3545; }    /* Red */
+.toast.warning { background-color: #ffc107; }  /* Yellow */
+
+/* Loading Spinner Styles */
+.loading-spinner {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #000;
+    z-index: 1000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .delete-selected-container {
+        text-align: center;
+    }
+
+    .item-table {
+        overflow-x: auto;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    .button-container button {
+        width: 100%;
+    }
+
+    #edit-item-modal {
+        width: 95%;
+        padding: 15px;
+    }
+}

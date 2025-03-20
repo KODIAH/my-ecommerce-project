@@ -1,0 +1,247 @@
+/* General Styles */
+.loyalty-section {
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+/* Loyalty Controls */
+.loyalty-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.loyalty-controls .form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.loyalty-controls label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.loyalty-controls input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.loyalty-controls input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.loyalty-controls button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.loyalty-controls button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Search Bar */
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Loyalty Members Table */
+.loyalty-members {
+    height: calc(100vh - 300px); /* Adjust based on your layout */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow: hidden; /* Prevent double scrollbars */
+}
+
+.loyalty-table-container {
+    flex: 1; /* Take up remaining space */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ddd; /* Optional: Add border for clarity */
+    border-radius: 5px;
+    background-color: #fff; /* Ensure background matches */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Minimum width for the table */
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: var(--navbar-footer-light);
+    color: white;
+    font-weight: 600;
+}
+
+table tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Redeem Button */
+.redeem-btn {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.redeem-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Dark Mode Styles */
+.dark-mode .loyalty-section {
+    background-color: #0f172a;
+    color: #fff;
+}
+
+.dark-mode .loyalty-controls label {
+    color: #fff;
+}
+
+.dark-mode .loyalty-controls input {
+    background-color: #444;
+    border-color: #555;
+    color: #fff;
+}
+
+.dark-mode .loyalty-controls input:focus {
+    border-color: #007bff;
+}
+
+.dark-mode table th {
+    background-color: var(--navbar-footer-dark);
+}
+
+.dark-mode table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Loading Spinner */
+#loading-spinner {
+    display: none;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#loading-spinner::after {
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Toast Notification */
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1000;
+    bottom: 30px;
+    right: 30px;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Stack loyalty controls vertically */
+    .loyalty-controls {
+        flex-direction: column;
+    }
+
+    .loyalty-controls .form-group {
+        width: 100%; /* Full width for form inputs */
+    }
+
+    .loyalty-controls button {
+        width: 100%; /* Full width for buttons */
+    }
+
+    /* Adjust loyalty members section */
+    .loyalty-members {
+        height: auto; /* Allow height to adjust dynamically */
+        padding-bottom: 20px; /* Add padding for spacing */
+    }
+
+    .loyalty-table-container {
+        overflow-x: auto; /* Enable horizontal scrolling on small screens */
+    }
+
+    /* Stack search bar and table container */
+    .search-bar {
+        margin-bottom: 15px;
+    }
+
+    /* Ensure table headers and cells are readable on small screens */
+    table th, table td {
+        padding: 8px; /* Reduce padding for smaller screens */
+        font-size: 14px; /* Adjust font size for readability */
+    }
+
+    /* Make redeem button smaller on small screens */
+    .redeem-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}

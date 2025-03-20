@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Categories</title>
+    <link rel="stylesheet" href="../assets/admin.css">
+    <link rel="stylesheet" href="../assets/shared.css">
+    <link rel="stylesheet" href="../assets/categories.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="top-navbar">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Sidebar" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h1>Manage Categories</h1>
+         <!-- Logout Button for Large Screens -->
+         <button class="logout-btn" id="logout-btn" aria-label="Logout">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">🌙</button>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <button class="close-sidebar" id="close-sidebar" aria-label="Close Sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul>
+                <li><a href="admin.html">Dashboard</a></li>
+                <li><a href="categories.html" class="active">Categories</a></li>
+                <li><a href="subcategories.html">Subcategories</a></li>
+                <li><a href="items.html">Items</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+                <li><a href="recommendations.html">Recommendations</a></li>
+                <li><a href="loyalty.html">Loyalty</a></li>
+                  <!-- Logout Button for Small Screens -->
+                  <li><button class="logout-btn sidebar-logout-btn" id="sidebar-logout-btn" aria-label="Logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content">
+            <section class="category-management">
+                <!-- Category Actions -->
+                <div class="category-actions">
+                    <input type="text" id="new-category" placeholder="Enter category name">
+
+                    <!-- Drag and Drop File Upload -->
+                    <div class="file-upload-container">
+                        <div id="drag-drop-area" class="drag-drop-area">
+                            <p>Drag & Drop an image here</p>
+                            <p>or</p>
+                            <button id="browse-btn" class="action-btn">Browse Files</button>
+                            <input type="file" id="category-image" accept="image/*" style="display: none;">
+                        </div>
+                        <img id="image-preview" src="" alt="Preview" style="display: none; width: 100px;">
+                    </div>
+
+                    <button id="add-category" class="action-btn">Add Category</button>
+                    <input type="text" id="category-search" placeholder="Search categories...">
+                    <select id="sort-categories">
+                        <option value="default">Sort By</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="date-new">Newest First</option>
+                        <option value="date-old">Oldest First</option>
+                    </select>
+                </div>
+
+                <!-- Loading Animation -->
+                <div id="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Loading...</p>
+                </div>
+
+                <!-- Category Table -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="select-all"></th>
+                                <th>Category Image</th>
+                                <th>Category Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="category-list">
+                            <!-- Categories will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button id="prev-page" disabled>Previous</button>
+                    <span id="page-number">Page 1</span>
+                    <button id="next-page">Next</button>
+                </div>
+
+                <!-- Bulk Delete -->
+                <div class="delete-selected-container">
+                    <button id="bulk-delete" class="action-btn" disabled>Delete Selected</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <div id="toast1" class="toast1"></div>
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to delete this category?</p>
+            <button id="confirm-delete">Yes, Delete</button>
+            <button id="cancel-delete">Cancel</button>
+        </div>
+    </div>
+    <div id="notification-card" class="notification-card">
+        You will be redirected in 45 seconds.
+      </div>
+    <footer class="dashboard-footer">
+        <p>&copy; 2025 KODIAH. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/categories.js"></script>
+    <script src="../js/shared.js"></script>
+    <script src="../js/dashboard.js"></script>
+
+    <script>
+        // JavaScript for Drag and Drop File Upload
+        const dragDropArea = document.getElementById("drag-drop-area");
+        const categoryImageInput = document.getElementById("category-image");
+        const browseBtn = document.getElementById("browse-btn");
+        const imagePreview = document.getElementById("image-preview");
+
+        // Open file dialog when "Browse Files" is clicked
+        browseBtn.addEventListener("click", () => {
+            categoryImageInput.click();
+        });
+
+        // Handle file selection
+        categoryImageInput.addEventListener("change", () => {
+            const file = categoryImageInput.files[0];
+            if (file) {
+                displayImagePreview(file);
+            }
+        });
+
+        // Handle drag and drop
+        dragDropArea.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dragDropArea.classList.add("dragover");
+        });
+
+        dragDropArea.addEventListener("dragleave", () => {
+            dragDropArea.classList.remove("dragover");
+        });
+
+        dragDropArea.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dragDropArea.classList.remove("dragover");
+
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith("image/")) {
+                categoryImageInput.files = e.dataTransfer.files;
+                displayImagePreview(file);
+            } else {
+                alert("Please upload a valid image file.");
+            }
+        });
+
+        // Display image preview
+        function displayImagePreview(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>

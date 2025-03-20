@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Subcategories</title>
+    <link rel="stylesheet" href="../assets/admin.css">
+    <link rel="stylesheet" href="../assets/shared.css">
+    <link rel="stylesheet" href="../assets/categories.css">
+    <link rel="stylesheet" href="../assets/subcategories.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="top-navbar">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Sidebar" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h1>Manage Subcategories</h1>
+         <!-- Logout Button for Large Screens -->
+         <button class="logout-btn" id="logout-btn" aria-label="Logout">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">🌙</button>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <button class="close-sidebar" id="close-sidebar" aria-label="Close Sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul>
+                <li><a href="admin.html">Dashboard</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="subcategories.html" class="active">Subcategories</a></li>
+                <li><a href="items.html">Items</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+                <li><a href="recommendations.html">Recommendations</a></li>
+                <li><a href="loyalty.html">Loyalty</a></li>
+                <li><a href="#" id="logout">Logout</a></li>
+                  <!-- Logout Button for Small Screens -->
+                  <li><button class="logout-btn sidebar-logout-btn" id="sidebar-logout-btn" aria-label="Logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content">
+            <section class="category-management">
+                <div class="category-actions">
+                    <!-- Category Dropdown -->
+                    <select id="category-dropdown" required>
+                        <option value="">Select Category</option>
+                        <!-- Populated dynamically -->
+                    </select>
+
+                    <!-- New Subcategory Input -->
+                    <input type="text" id="new-subcategory" placeholder="Enter subcategory name">
+
+                    <!-- Drag and Drop File Upload -->
+                    <div class="file-upload-container">
+                        <div id="drag-drop-area" class="drag-drop-area">
+                            <p>Drag & Drop an image here</p>
+                            <p>or</p>
+                            <button id="browse-btn" class="action-btn">Browse Files</button>
+                            <input type="file" id="subcategory-image" accept="image/*" style="display: none;">
+                        </div>
+                        <img id="image-preview" src="" alt="Preview" style="display: none; width: 100px;">
+                    </div>
+
+                    <!-- Add Subcategory Button -->
+                    <button id="add-subcategory" class="action-btn">Add Subcategory</button>
+
+                    <!-- Search Subcategories -->
+                    <input type="text" id="subcategory-search" placeholder="Search subcategories...">
+
+                    <!-- Filter by Category -->
+                    <select id="filter-category">
+                        <option value="">Filter by Category</option>
+                        <!-- Populated dynamically -->
+                    </select>
+
+                    <!-- Sort Subcategories -->
+                    <select id="sort-subcategories">
+                        <option value="default">Sort By</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                    </select>
+
+                    <!-- Print PDF Button -->
+                    <button id="print-pdf" class="action-btn">Print PDF</button>
+                </div>
+
+                <!-- Subcategories Table -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="select-all"></th>
+                                <th>Subcategory Name</th>
+                                <th>Category</th>
+                                <th>Image</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subcategory-list">
+                            <!-- Subcategories will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination" id="pagination">
+                    <!-- Pagination buttons will be dynamically added here -->
+                </div>
+
+                <!-- Bulk Delete Button -->
+                <div class="delete-selected-container">
+                    <button id="bulk-delete" class="action-btn" disabled>Delete Selected</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to delete this subcategory?</p>
+            <button id="confirm-delete">Yes, Delete</button>
+            <button id="cancel-delete">Cancel</button>
+        </div>
+    </div>
+    <div id="notification-card" class="notification-card">
+        You will be redirected in 45 seconds.
+      </div>
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <p>&copy; 2025 KODIAH. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../js/subcategories.js"></script>
+    <script src="../js/shared.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

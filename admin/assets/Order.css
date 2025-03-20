@@ -1,0 +1,289 @@
+/* Order Management Section */
+.order-filters {
+    display: flex;
+    flex-direction: column; /* Stack components vertically on all screens */
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.order-filters .form-group {
+    width: 100%; /* Full width for each form group */
+}
+
+.order-filters input,
+.order-filters select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.order-filters .button-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.order-filters button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.order-filters button:hover {
+    background-color: var(--primary-color-dark);
+    transform: scale(1.05);
+}
+
+.order-filters button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Orders Table */
+.order-table {
+    margin-top: 20px;
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scrolling on small screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* Minimum width for the table */
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: var(--navbar-footer-light);
+    color: white;
+}
+
+table tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Checkbox Styling */
+.order-checkbox {
+    cursor: pointer;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+.error {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #ff4d4d;
+}
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #888;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #555;
+}
+
+.modal-content .close-btn:hover {
+    color: #000;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.modal-content p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Toast Notifications */
+.toast-message {
+    position: fixed;
+    top: 80px;
+    right: 30px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    z-index: 1001;
+    animation: slideIn 0.5s ease, fadeOut 0.5s ease 5s; /* Fade out after 5 seconds */
+}
+
+.toast-message.success {
+    background-color: #28a745;
+}
+
+.toast-message.error {
+    background-color: #dc3545;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Dark Mode Styling */
+.dark-mode table th {
+    background-color: var(--navbar-footer-dark);
+}
+
+.dark-mode table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .modal-content {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode .modal-content .close-btn {
+    color: #ccc;
+}
+
+.dark-mode .modal-content .close-btn:hover {
+    color: white;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    /* On larger screens, stack components vertically */
+    .order-filters {
+        flex-direction: column;
+    }
+
+    .order-filters .form-group {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    /* On smaller screens, make the table scrollable */
+    .order-table {
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+        min-width: 600px; /* Ensure the table is scrollable */
+    }
+}

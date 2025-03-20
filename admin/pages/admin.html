@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Dashboard for managing categories, subcategories, items, orders, and analytics.">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../assets/admin.css">
+    <link rel="stylesheet" href="../assets/shared.css">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Top Navbar -->
+    <header class="top-navbar">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Sidebar" aria-expanded="false">
+            <i class="fas fa-bars"></i> <!-- Bars icon -->
+        </button>
+        <h1>Welcome, Admin</h1>
+         <!-- Logout Button for Large Screens -->
+         <button class="logout-btn" id="logout-btn" aria-label="Logout">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">🌙</button>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar" aria-label="Sidebar Navigation" role="navigation">
+            <button class="close-sidebar" id="close-sidebar" aria-label="Close Sidebar">
+                <i class="fas fa-times"></i> <!-- Close icon -->
+            </button>
+            <ul>
+                <li><a href="admin.html" aria-current="page">Dashboard</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="subcategories.html">Subcategories</a></li>
+                <li><a href="items.html">Items</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+                <li><a href="recommendations.html">Recommendations</a></li>
+                <li><a href="loyalty.html">Loyalty</a></li>
+                  <!-- Logout Button for Small Screens -->
+                  <li><button class="logout-btn sidebar-logout-btn" id="sidebar-logout-btn" aria-label="Logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content" aria-label="Main Content">
+            <section class="dashboard-overview">
+                <div class="card">
+                    <h2>Total Orders</h2>
+                    <p id="total-orders">Loading...</p>
+                </div>
+                <div class="card">
+                    <h2>Revenue</h2>
+                    <p>$<span id="total-revenue">Loading...</span></p>
+                </div>
+                <div class="card">
+                    <h2>Popular Product</h2>
+                    <p id="popular-product">Loading...</p>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions" aria-label="Quick Actions">
+                <h2>Quick Actions</h2>
+                <div class="actions-container">
+                    <button class="action-btn" onclick="window.location.href='categories.html'">Manage Categories</button>
+                    <button class="action-btn" onclick="window.location.href='subcategories.html'">Manage Subcategories</button>
+                    <button class="action-btn" onclick="window.location.href='items.html'">Manage Items</button>
+                    <button class="action-btn" onclick="window.location.href='orders.html'">View Orders</button>
+                    <button class="action-btn" onclick="window.location.href='analytics.html'">View Analytics</button>
+                    <button class="action-btn" onclick="window.location.href='loyalty.html'">Loyalty Program</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <div id="notification-card" class="notification-card">
+        You will be redirected in 45 seconds.
+      </div>
+    <!-- Footer -->
+    <footer class="dashboard-footer" aria-label="Footer">
+        <p>&copy; 2025 KODIAH. All rights reserved.</p>
+    </footer>
+    <script src="../js/shared.js"></script>
+    <script src="../js/dashboard.js"></script>
+   
+</body>
+</html>

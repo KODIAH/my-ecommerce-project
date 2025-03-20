@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Analytics</title>
+    <link rel="stylesheet" href="../assets/admin.css">
+    <link rel="stylesheet" href="../assets/shared.css">
+    <link rel="stylesheet" href="../assets/analytics.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js for visual analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS for new features -->
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Top Navbar -->
+    <header class="top-navbar">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Sidebar" aria-expanded="false">
+            <i class="fas fa-bars"></i> <!-- Bars icon -->
+        </button>
+        <h1>Analytics Dashboard</h1>
+         <!-- Logout Button for Large Screens -->
+         <button class="logout-btn" id="logout-btn" aria-label="Logout">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">🌙</button>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar" aria-label="Sidebar Navigation" role="navigation">
+            <button class="close-sidebar" id="close-sidebar" aria-label="Close Sidebar">
+                <i class="fas fa-times"></i> <!-- Close icon -->
+            </button>
+            <ul>
+                <li><a href="admin.html">Dashboard</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="subcategories.html">Subcategories</a></li>
+                <li><a href="items.html">Items</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="analytics.html" class="active">Analytics</a></li>
+                <li><a href="recommendations.html">Recommendations</a></li>
+                <li><a href="loyalty.html">Loyalty</a></li>
+                  <!-- Logout Button for Small Screens -->
+                  <li><button class="logout-btn sidebar-logout-btn" id="sidebar-logout-btn" aria-label="Logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content" aria-label="Main Content">
+            <!-- Analytics Overview -->
+            <section class="analytics-overview">
+                <div class="card">
+                    <h2>Total Sales</h2>
+                    <p id="total-sales">0</p>
+                </div>
+                <div class="card">
+                    <h2>Total Revenue</h2>
+                    <p>$<span id="total-revenue">0.00</span></p>
+                </div>
+                <div class="card">
+                    <h2>Total Orders</h2>
+                    <p id="total-orders">0</p>
+                </div>
+            </section>
+
+            <!-- Chart Container -->
+            <section class="chart-container">
+                <canvas id="salesChart"></canvas>
+            </section>
+
+            <!-- Loading Spinner -->
+            <div id="loading-spinner"></div>
+
+            <!-- Toast Notification -->
+            <div id="toast" class="toast"></div>
+
+            <!-- Date Filter -->
+            <section class="date-filter">
+                <div class="form-group">
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate">
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End Date:</label>
+                    <input type="date" id="endDate">
+                </div>
+                <button id="filterBtn" class="action-btn">Apply Filter</button>
+            </section>
+        </main>
+    </div>
+    <div id="notification-card" class="notification-card">
+        You will be redirected in 45 seconds.
+      </div>
+    <!-- Footer -->
+    <footer class="dashboard-footer" aria-label="Footer">
+        <p>&copy; 2025 KODIAH. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/analytics.js"></script>
+    <script src="../js/shared.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

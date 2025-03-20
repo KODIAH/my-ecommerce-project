@@ -1,0 +1,119 @@
+/* Style for the notification card */
+#notification-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(10, 10, 10, 0.9);
+  text-align: center;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+}
+
+.notification-content {
+  color: #020d26;
+}
+
+.notification-content strong {
+  color:  #020d26;
+}
+
+/* Style for the login button */
+#login-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  animation: blink 1s infinite;
+}
+
+#login-button:hover {
+  background-color: #0056b3;
+}
+
+/* Blinking animation */
+@keyframes blink {
+  0% { opacity: 1; }
+  25% { opacity: 0.75; }
+  50% { opacity: 0.5; }
+  75% { opacity: 0.75; }
+  100% { opacity: 1; }
+}
+
+
+
+/* for handling logout functions */
+/* Logout Button Styles */
+.logout-btn {
+  background-color: #dc3545; /* Red color for logout */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+  display: none; /* Hidden by default */
+}
+
+.logout-btn:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+/* Logout Button in Navbar (Large Screens) */
+.top-navbar .logout-btn {
+  .top-navbar .logout-btn {
+      display: none;
+  }
+  margin-left: auto; /* Push to the left of the theme toggle */
+  margin-right: 16px; /* Space between logout and theme toggle */
+}
+
+/* Logout Button in Sidebar (Small Screens) */
+.sidebar .sidebar-logout-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  text-align: left;
+  background-color: #dc3545; /* Red color for small screens */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  display: none; /* Hidden by default */
+}
+
+.sidebar .sidebar-logout-btn:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Hide logout button in navbar on small screens */
+
+  /* Show logout button in sidebar on small screens */
+  .sidebar .sidebar-logout-btn {
+      display: block; /* Visible when logged in */
+  }
+}
+
+@media (max-width: 768px) {
+  .top-navbar .logout-btn {
+      display: none !important;
+  }
+}
+
+
+  /* Show logout button in navbar on large screens */
+  .top-navbar .logout-btn {
+      display: flex; /* Visible when logged in */
+  }

@@ -1,0 +1,338 @@
+/* Category Management Section */
+.category-management {
+    padding: 20px;
+    overflow-x: auto;
+}
+
+/* Category Actions */
+.category-actions {
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category-actions input,
+.category-actions select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 100%; /* Full width on large screens */
+}
+
+.category-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Full width on large screens */
+}
+
+.category-actions button:hover {
+    transform: scale(1.05);
+}
+
+/* Drag and Drop File Upload */
+.file-upload-container {
+    margin-bottom: 20px;
+}
+
+.drag-drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    align-items: center;
+}
+
+.drag-drop-area.dragover {
+    border-color: #09f;
+}
+
+.drag-drop-area p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #666;
+}
+
+.drag-drop-area button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #09f;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Full width on large screens */
+    max-width: 300px; /* Limit maximum width */
+}
+
+.drag-drop-area button:hover {
+    background-color: #007acc;
+}
+
+/* Image Preview */
+#image-preview {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 100px;
+    display: none; /* Hidden by default */
+}
+
+/* Bulk Delete Button */
+.delete-selected-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#bulk-delete {
+    background: #d9534f; /* Keep the delete button noticeable */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Full width on large screens */
+    max-width: 300px; /* Limit maximum width */
+}
+
+#bulk-delete:hover {
+    background: #c9302c;
+}
+
+#bulk-delete:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Scrollable Table Container */
+.table-container {
+    overflow-x: auto; /* Enables horizontal scrolling */
+    max-width: 100%; /* Ensures it doesn't exceed the page width */
+    border: 1px solid #ddd; /* Optional: Adds a border around the table */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Ensure table takes full width */
+.table-container table {
+    width: 100%;
+    min-width: 600px; /* Ensures table is not too narrow */
+    border-collapse: collapse;
+}
+
+/* Fixed Table Header */
+.table-container thead {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 2;
+}
+
+/* Table Styling */
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: var(--navbar-footer-light);
+    color: white;
+}
+
+table tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Drag-and-Drop Styling */
+table tr[draggable="true"] {
+    cursor: grab;
+    transition: background 0.3s ease;
+}
+
+table tr[draggable="true"]:active {
+    cursor: grabbing;
+}
+
+table tr.dragging {
+    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Fixes */
+.dark-mode .table-container thead {
+    background-color: var(--navbar-footer-dark);
+}
+
+.dark-mode table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Delete Confirmation Modal */
+.modal {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.modal-content p {
+    margin-bottom: 15px;
+}
+
+.modal button {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#confirm-delete {
+    background: #d9534f;
+    color: white;
+}
+
+#confirm-delete:hover {
+    background: #c9302c;
+}
+
+#cancel-delete {
+    background: #ccc;
+}
+
+#cancel-delete:hover {
+    background: #b3b3b3;
+}
+
+/* Loading Animation */
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(187, 23, 23, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+    display: none; /* Hidden by default */
+}
+
+.spinner {
+    border: 4px solid rgba(187, 13, 13, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #ffffff;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .table-container {
+        overflow-x: auto; /* Ensures scrolling on smaller screens */
+        display: block;
+        white-space: nowrap; /* Prevents text from wrapping */
+    }
+
+    .table-container table {
+        min-width: 700px; /* Ensures table content remains accessible */
+    }
+
+    .category-actions {
+        flex-direction: column;
+    }
+
+    .category-actions input,
+    .category-actions select {
+        max-width: 100%; /* Full width on smaller screens */
+    }
+
+    .drag-drop-area {
+        padding: 15px;
+    }
+
+    .drag-drop-area p {
+        font-size: 14px;
+    }
+
+    .drag-drop-area button {
+        padding: 8px 16px;
+    }
+}
+.toast1 {
+    visibility: hidden;
+    min-width: 100px;
+    margin-top: 50px;
+    margin-left: 125px;
+    background-color: #ff4444; /* Red background for error */
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    right: 50%;
+    top: 30px;
+    font-size: 14px;
+}
+
+.toast1.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {top: 30px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}

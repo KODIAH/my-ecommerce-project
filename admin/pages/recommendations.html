@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Recommendations</title>
+    <link rel="stylesheet" href="../assets/admin.css">
+    <link rel="stylesheet" href="../assets/shared.css">
+    <link rel="stylesheet" href="../assets/recommendations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Top Navbar -->
+    <header class="top-navbar">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Sidebar" aria-expanded="false">
+            <i class="fas fa-bars"></i> <!-- Bars icon -->
+        </button>
+        <h1>Product Recommendations</h1>
+         <!-- Logout Button for Large Screens -->
+         <button class="logout-btn" id="logout-btn" aria-label="Logout">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">🌙</button>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar" aria-label="Sidebar Navigation" role="navigation">
+            <button class="close-sidebar" id="close-sidebar" aria-label="Close Sidebar">
+                <i class="fas fa-times"></i> <!-- Close icon -->
+            </button>
+            <ul>
+                <li><a href="admin.html">Dashboard</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="subcategories.html">Subcategories</a></li>
+                <li><a href="items.html">Items</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+                <li><a href="recommendations.html" class="active">Recommendations</a></li>
+                <li><a href="loyalty.html">Loyalty</a></li>
+                  <!-- Logout Button for Small Screens -->
+                  <li><button class="logout-btn sidebar-logout-btn" id="sidebar-logout-btn" aria-label="Logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content" aria-label="Main Content">
+            <section class="recommendations">
+                <h2>Manage Product Recommendations</h2>
+
+                <!-- Loading Indicator -->
+                <div id="loading-indicator" class="loading-indicator" aria-live="polite" aria-busy="true" hidden>
+                    <i class="fas fa-spinner fa-spin"></i> Loading...
+                </div>
+
+                <!-- Error Message -->
+                <div id="error-message" class="error-message" aria-live="assertive" hidden></div>
+
+                <!-- Selection & Add Controls -->
+                <div class="recommendation-controls">
+                    <div class="form-group">
+                        <label for="product-select">Select a Product:</label>
+                        <select id="product-select" aria-label="Select a product">
+                            <option value="">-- Select a Product --</option>
+                            <!-- Products will be dynamically loaded -->
+                        </select>
+                    </div>
+                    <button id="add-recommendation" class="action-btn" aria-label="Add selected product to recommendations">Add</button>
+                </div>
+
+                <!-- Recommended Products List -->
+                <div class="recommendation-list-container">
+                    <h3>Recommended Products</h3>
+                    <ul id="recommendation-list" aria-label="List of recommended products"></ul>
+
+                    <!-- Pagination Controls -->
+                    <div id="pagination-container" class="pagination-container" aria-label="Pagination">
+                        <!-- Pagination buttons will be dynamically added here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <div id="notification-card" class="notification-card">
+        You will be redirected in 45 seconds.
+      </div>
+    <!-- Footer -->
+    <footer class="dashboard-footer" aria-label="Footer">
+        <p>&copy; 2025 KODIAH. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/recommendations.js"></script>
+    <script src="../js/shared.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
